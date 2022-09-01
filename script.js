@@ -26,3 +26,23 @@ const prevSlide = () => {
     slides[slides.length - 1].classList.add("current");
   }
 }
+
+next.addEventListener("click", e => {
+  nextSlide();
+  if(auto){
+    clearInterval(slideInterval);
+    slideInterval = setInterval(nextSlide, intervalTime);
+  }
+});
+prev.addEventListener("click", e => {
+  prevSlide();
+  if(auto){
+    clearInterval(slideInterval);
+    slideInterval = setInterval(nextSlide, intervalTime);
+  }
+});
+
+// Auto slide
+if(auto){
+  slideInterval = setInterval(nextSlide, intervalTime);
+}
